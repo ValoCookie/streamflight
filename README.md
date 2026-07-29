@@ -75,30 +75,6 @@ Development builds will be published through **GitHub Releases**, allowing small
 
 [**Open StreamFlight releases →**](https://github.com/ValoCookie/streamflight/releases)
 
-## Run from Python
-
-```bat
-py -m pip install -r requirements.txt
-py StreamPreflight.py
-```
-
-## Build the Windows app + installer
-
-Run:
-
-```bat
-BUILD_INSTALLER.bat
-```
-
-This creates:
-
-```text
-dist\StreamPreflight.exe
-installer_output\StreamPreflight_Setup_v1.0.5.exe
-```
-
-Inno Setup 6 is required for the installer step.
-
 ## OBS setup
 
 Enable **Tools → WebSocket Server Settings** in OBS. OBS WebSocket 5.x normally uses port `4455`. Enter the port / password and any expected profile, scene collection, starting scene, required sources or panic settings inside StreamFlight.
