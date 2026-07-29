@@ -30,10 +30,6 @@ It deliberately does **not** start or stop your live broadcast. OBS remains in c
 
 StreamFlight is a general streaming utility, so it does not advertise osu!Requests to everybody.
 
-When StreamFlight detects **osu!stable**, **osu!lazer**, or an existing osu!Requests installation, it can show a one-time introduction:
-
-> **Howdy, do you play osu!?**
-
 The short prompt explains what osu!Requests does and waits five seconds before its buttons or close action unlock, giving the streamer a moment to actually read it instead of dismissing it by accident.
 
 If osu!Requests is already installed, StreamFlight can optionally reuse its Twitch connection for stream metadata and health checks. If it is not installed, the prompt links to the osu!Requests GitHub project. The integration is always optional.
