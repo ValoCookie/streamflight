@@ -3,92 +3,203 @@
 **A Windows pre-stream workspace and health-check companion for streamers.**
 
 > ### 🎥 Streamer tools by ValoCookie
-> **StreamFlight** prepares and checks the stream setup around OBS.
-> Play osu!? **[Check out osu!Requests →](https://github.com/ValoCookie/osulazer-twitch-map-request-bot)** for Twitch map requests, queues and OBS request overlays.
+> **StreamFlight** handles the boring setup checks before going live.  
+> Play osu!? **[Check out osu!Requests →](https://github.com/ValoCookie/osu-Requests)** for Twitch map requests, queues, filters and OBS request overlays.
 
 ---
 
-StreamFlight helps you get the boring pre-stream stuff out of your head before you hit **Go Live**: launch the right apps and websites, run reusable checklists, verify OBS, check expected Windows devices, test a short local recording, inspect Twitch stream info and keep a reversible panic / BRB action ready.
+## Current build
 
-It deliberately does **not** start or stop your live broadcast. OBS remains in control of the actual stream button.
+**Current GitHub build: v1.0.9**
 
-## Highlights
+[**Open the latest GitHub releases →**](https://github.com/ValoCookie/streamflight/releases)
 
-- reusable stream setup profiles
-- ordered app launching and background-helper handling
-- websites and manual pre-stream checklists
-- OBS WebSocket health checks
-- short local OBS test recording
-- expected-device checks
-- Windows pending-restart warning
-- optional Twitch title / category / tag checks
-- reversible OBS panic / BRB scene + microphone safety action
-- advanced optional custom actions
-- local-first configuration
+---
 
-## osu! players + osu!Requests
+# What it does
 
-StreamFlight is a general streaming utility, so it does not advertise osu!Requests to everybody.
+StreamFlight is for the stuff around the stream.
 
-The short prompt explains what osu!Requests does and waits five seconds before its buttons or close action unlock, giving the streamer a moment to actually read it instead of dismissing it by accident.
+It helps keep recurring setup steps in one place so you can catch things like the wrong OBS state, a missing device, a forgotten app or a broken recording setup **before chat becomes the first person to tell you**.
 
-If osu!Requests is already installed, StreamFlight can optionally reuse its Twitch connection for stream metadata and health checks. If it is not installed, the prompt links to the osu!Requests GitHub project. The integration is always optional.
+It deliberately does **not** start or stop your live broadcast. OBS stays in control of the actual stream button.
 
-[**Open osu!Requests on GitHub →**](https://github.com/ValoCookie/osulazer-twitch-map-request-bot)
+---
+
+## Applications
+
+Create a reusable stream workspace and keep the apps you need for that setup together.
+
+StreamFlight can:
+
+- launch applications in a chosen order
+- keep background/helper apps separate from normal apps
+- track tools used around the stream
+- clean up eligible helper applications at the end of the session
+
+---
+
+## Stream Extras
+
+Some stream setups need more than OBS and a browser.
+
+The **Stream Extras** area can include things such as:
+
+- **LurkBait Twitch Fishing**
+- Steam games and Steam launch URIs
+- `.url` shortcuts
+- **JKPS**
+- an optional JKPS `.cfg` / theme file
+- standalone helper/config files such as `.cfg`, `.ini`, `.json`, `.txt`, `.yaml` and `.yml`
+
+StreamFlight launches or tracks these tools; it does not rewrite their configs.
+
+---
+
+## Websites
+
+Keep the websites you routinely open before a stream together with the rest of the setup instead of hunting through bookmarks every time.
+
+The Websites page is scrollable for longer setups.
+
+---
+
+## Checklist
+
+Build a reusable checklist for the things you personally want to verify before going live.
+
+The Checklist page is scrollable, and checkbox feedback is designed to repaint immediately instead of feeling delayed while other status work is happening.
+
+---
 
 ## Stream Tools
 
-The **Stream Tools** page combines OBS, Twitch, device and Windows checks into one health snapshot. It can verify configured OBS expectations, microphone / desktop-audio presence, required scene sources, expected Windows devices, Twitch stream information and whether Windows is waiting for a reboot.
+The **Stream Tools** page combines OBS, Windows, Twitch and device checks into one health snapshot.
 
-Health checks report PASS / WARNING / FAIL-style results instead of trying to replace OBS.
+It can check things such as:
+
+- whether OBS is running
+- OBS WebSocket connectivity for deeper OBS checks
+- microphone / desktop-audio expectations
+- configured OBS scenes/sources
+- expected Windows devices
+- Windows pending-restart state
+- Twitch stream information where configured
+
+Basic **“is OBS open?”** detection does not depend on WebSocket. StreamFlight checks the local Windows process first, with additional Windows fallbacks where needed.
+
+The Stream Tools page is scrollable too.
+
+---
 
 ## OBS test recording
 
-**TEST RECORDING** starts a short local OBS recording and stops it automatically. It is designed for checking actual microphone, game, camera and capture output before going live.
+**TEST RECORDING** starts a short local OBS recording and stops it automatically.
 
-It refuses to interrupt an already-active recording and never starts or stops the live stream.
+It is meant for checking the actual microphone, game, camera and capture output before going live.
+
+It refuses to interrupt an already-active recording and never starts or stops the live broadcast.
+
+---
 
 ## Stream safety / PANIC
 
-You can configure an OBS panic scene, optional microphone muting and an optional global hotkey.
+You can configure an OBS panic/BRB scene, optional microphone muting and an optional global hotkey.
 
-- **PANIC** stores the current scene / mute state, mutes configured mic-like OBS inputs and switches to the panic scene.
+- **PANIC** stores the current scene/mute state, applies the configured safety actions and switches to the panic scene.
 - **RESUME** restores the captured scene and mute state.
 
-This is intentionally reversible.
+The workflow is intentionally reversible.
 
-## Core workflow
+---
 
-1. Choose a Stream Setup.
-2. Add applications and arrange their launch order.
-3. Mark helper applications as Background where appropriate.
-4. Add websites and manual checklist items.
-5. Configure optional OBS expectations, devices and Stream Tools.
-6. Click **START SESSION**.
-7. Resolve any warnings and optionally run **TEST RECORDING**.
-8. Start the actual broadcast from OBS when you are ready.
-9. Use **END SESSION** afterward to clean up helper applications StreamFlight launched and is allowed to close.
+## OBS detection vs OBS WebSocket
 
-## Download / releases
+StreamFlight treats these as two different things.
 
-Development builds will be published through **GitHub Releases**, allowing smaller updates to ship without waiting for a Microsoft Store submission.
+**OBS running**
+- detected locally through Windows process checks
+- does not require WebSocket
 
-[**Open StreamFlight releases →**](https://github.com/ValoCookie/streamflight/releases)
+**Deeper OBS information/actions**
+- scenes
+- profile
+- recording state
+- sources
+- audio checks
+- panic/BRB actions
 
-## OBS setup
+These require a working OBS WebSocket connection.
 
-Enable **Tools → WebSocket Server Settings** in OBS. OBS WebSocket 5.x normally uses port `4455`. Enter the port / password and any expected profile, scene collection, starting scene, required sources or panic settings inside StreamFlight.
+This prevents a WebSocket configuration problem from being incorrectly reported as “OBS is not running.”
 
-## Privacy / product boundary
+---
 
-StreamFlight stores its settings locally. It may perform explicitly configured OBS-side helper actions such as health queries, local test recordings, panic / BRB scene switching and reversible microphone muting.
+## osu! players + osu!Requests
+
+StreamFlight is a general streaming utility, so osu!Requests is optional.
+
+When osu!stable or osu!lazer is relevant, StreamFlight can introduce the companion app.
+
+If osu!Requests is already installed, StreamFlight can optionally reuse its Twitch connection for supported stream metadata/health checks.
+
+The integration is never required.
+
+---
+
+# Core workflow
+
+1. Choose a Stream Setup
+2. Add applications and Stream Extras
+3. Add websites
+4. Build your checklist
+5. Configure optional OBS expectations and devices
+6. Click **START SESSION**
+7. Resolve warnings
+8. Optionally run **TEST RECORDING**
+9. Start the actual broadcast from OBS when you are ready
+10. Use **END SESSION** afterward to clean up helper applications StreamFlight launched and is allowed to close
+
+---
+
+# OBS setup
+
+For deeper OBS checks/actions, enable:
+
+**Tools → WebSocket Server Settings**
+
+in OBS.
+
+OBS WebSocket 5.x commonly uses port `4455`; enter your actual port/password inside StreamFlight along with any expected profile, scene collection, starting scene, sources or panic settings you want checked.
+
+---
+
+# Privacy / product boundary
+
+StreamFlight stores its settings locally.
+
+It may perform explicitly configured helper actions such as:
+
+- OBS health queries
+- local test recordings
+- panic/BRB scene switching
+- reversible microphone muting
+- launching configured apps, websites and Stream Extras
 
 **It never starts or stops the live broadcast.**
 
-## Related project
+---
 
-- [**osu!Requests** — Twitch → osu! map requests for stable and lazer](https://github.com/ValoCookie/osulazer-twitch-map-request-bot)
+# Related project
 
-## Project status
+**[osu!Requests](https://github.com/ValoCookie/osu-Requests)** — Twitch → osu! map requests for osu!stable and osu!lazer.
 
-StreamFlight is still in active beta development. Feedback, bug reports and weird edge cases are welcome.
+---
+
+# Project status
+
+StreamFlight is actively developed.
+
+The **current GitHub build is v1.0.9**.
+
+Feedback, bug reports, weird PC-specific behavior and cursed streamer setups are all welcome. 💜
