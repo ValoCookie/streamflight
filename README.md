@@ -11,7 +11,7 @@
 ## Latest release
 
 <!-- AUTO_VERSION_START -->
-**Version 1.1.8 is currently available.**
+**Version 1.2.0 is currently available.**
 <!-- AUTO_VERSION_END -->
 
 [**Open the latest GitHub releases →**](https://github.com/ValoCookie/streamflight/releases)
