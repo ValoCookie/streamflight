@@ -11,7 +11,7 @@
 ## Latest release
 
 <!-- AUTO_VERSION_START -->
-**Version 1.1.7 is currently available.**
+**Version 1.1.8 is currently available.**
 <!-- AUTO_VERSION_END -->
 
 [**Open the latest GitHub releases →**](https://github.com/ValoCookie/streamflight/releases)
@@ -50,7 +50,7 @@ StreamFlight can check for updates while running and show a small non-focus-stea
 ## Project status
 
 <!-- AUTO_STATUS_START -->
-The latest public release is **v1.1.7**.
+The latest public release is **v1.1.8**.
 <!-- AUTO_STATUS_END -->
 
 Feedback and bug reports are welcome.
