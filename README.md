@@ -50,7 +50,7 @@ StreamFlight can check for updates while running and show a small non-focus-stea
 ## Project status
 
 <!-- AUTO_STATUS_START -->
-The latest public release is **v1.1.8**.
+The latest public release is **v1.2.0**.
 <!-- AUTO_STATUS_END -->
 
 Feedback and bug reports are welcome.
